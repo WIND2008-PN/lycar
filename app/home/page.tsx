@@ -7,20 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { t } from "@/lib/i18n"
-import {
-  Wrench,
-  Activity,
-  Target,
-  Sparkles,
-  Heart,
-  Trophy,
-  Map,
-  TrendingUp,
-  Users,
-  Zap,
-  ArrowRight,
-  Coins,
-} from "lucide-react"
+import { Wrench, Sparkles, Heart, Trophy, Users, Zap, ArrowRight, Coins } from "lucide-react"
 import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
@@ -128,71 +115,6 @@ export default function HomePage() {
               <p className="text-sm text-accent-foreground/80 leading-relaxed">
                 {language === "th" ? "รับคำแนะนำและเคล็ดลับประจำวันจาก AI" : "Get daily tips and insights from AI"}
               </p>
-            </Card>
-          </Link>
-        </div>
-
-        {/* Feature Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Link href="/car-health">
-            <Card className="p-4 hover:shadow-md transition-shadow cursor-pointer group">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Activity className="w-5 h-5 text-primary" />
-                </div>
-                <h4 className="font-semibold group-hover:text-primary transition-colors">
-                  {t("nav.carHealth", language)}
-                </h4>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{t("home.carHealthDesc", language)}</p>
-            </Card>
-          </Link>
-
-          <Link href="/missions/today">
-            <Card className="p-4 hover:shadow-md transition-shadow cursor-pointer group">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Target className="w-5 h-5 text-primary" />
-                </div>
-                <h4 className="font-semibold group-hover:text-primary transition-colors">
-                  {t("home.missionsToday", language)}
-                </h4>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="text-2xl font-bold text-primary">3</div>
-                <span className="text-sm text-muted-foreground">/4 {language === "th" ? "ภารกิจ" : "missions"}</span>
-              </div>
-            </Card>
-          </Link>
-
-          <Link href="/games/leaderboard">
-            <Card className="p-4 hover:shadow-md transition-shadow cursor-pointer group">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Trophy className="w-5 h-5 text-primary" />
-                </div>
-                <h4 className="font-semibold group-hover:text-primary transition-colors">
-                  {language === "th" ? "ลีดเดอร์บอร์ด" : "Leaderboard"}
-                </h4>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="text-2xl font-bold text-primary">#127</div>
-                <TrendingUp className="w-4 h-4 text-green-500" />
-              </div>
-            </Card>
-          </Link>
-
-          <Link href="/routes/nearby">
-            <Card className="p-4 hover:shadow-md transition-shadow cursor-pointer group">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <Map className="w-5 h-5 text-primary" />
-                </div>
-                <h4 className="font-semibold group-hover:text-primary transition-colors">
-                  {language === "th" ? "เส้นทางใกล้เคียง" : "Nearby Routes"}
-                </h4>
-              </div>
-              <p className="text-sm text-muted-foreground">{language === "th" ? "5 เส้นทางปลอดภัย" : "5 safe routes"}</p>
             </Card>
           </Link>
         </div>
