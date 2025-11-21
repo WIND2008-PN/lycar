@@ -135,7 +135,7 @@ export function MainNav() {
               <Menu className="w-6 h-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[300px] p-0 flex flex-col h-full">
+          <SheetContent side="left" className="w-[300px] p-0 flex flex-col h-full overflow-hidden">
             <SheetHeader className="p-4 border-b shrink-0">
               <SheetTitle className="text-left flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
@@ -153,33 +153,35 @@ export function MainNav() {
                 />
               </div>
             </SheetHeader>
-            <ScrollArea className="flex-1">
-              <div className="p-4 space-y-6">
-                {filteredFeatures.map((group, i) => (
-                  <div key={i}>
-                    <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-2">
-                      {group.group}
-                    </h3>
-                    <div className="space-y-1">
-                      {group.items.map((item) => (
-                        <Button
-                          key={item.href}
-                          variant={pathname === item.href ? "secondary" : "ghost"}
-                          className="w-full justify-start"
-                          onClick={() => {
-                            router.push(item.href)
-                            setDrawerOpen(false)
-                          }}
-                        >
-                          <item.icon className="w-4 h-4 mr-2" />
-                          {item.label}
-                        </Button>
-                      ))}
+            <div className="flex-1 overflow-hidden">
+              <ScrollArea className="h-full">
+                <div className="p-4 space-y-6 pb-8">
+                  {filteredFeatures.map((group, i) => (
+                    <div key={i}>
+                      <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-2">
+                        {group.group}
+                      </h3>
+                      <div className="space-y-1">
+                        {group.items.map((item) => (
+                          <Button
+                            key={item.href}
+                            variant={pathname === item.href ? "secondary" : "ghost"}
+                            className="w-full justify-start"
+                            onClick={() => {
+                              router.push(item.href)
+                              setDrawerOpen(false)
+                            }}
+                          >
+                            <item.icon className="w-4 h-4 mr-2" />
+                            {item.label}
+                          </Button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </ScrollArea>
+                  ))}
+                </div>
+              </ScrollArea>
+            </div>
           </SheetContent>
         </Sheet>
       </div>
