@@ -135,8 +135,8 @@ export function MainNav() {
               <Menu className="w-6 h-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[300px] p-0 flex flex-col overflow-hidden">
-            <SheetHeader className="p-4 border-b shrink-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+          <SheetContent side="left" className="w-[300px] p-0 flex flex-col h-full overflow-hidden">
+            <SheetHeader className="p-4 border-b shrink-0 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-10">
               <SheetTitle className="text-left flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
                   <Wrench className="w-4 h-4 text-primary-foreground" />
@@ -153,39 +153,42 @@ export function MainNav() {
                 />
               </div>
             </SheetHeader>
-            <ScrollArea className="flex-1">
-              <div className="p-4 space-y-6 pb-6">
-                {filteredFeatures.map((group, i) => (
-                  <div
-                    key={i}
-                    className="animate-in fade-in slide-in-from-left-2 duration-300"
-                    style={{ animationDelay: `${i * 50}ms` }}
-                  >
-                    <h3 className="text-xs font-bold text-primary/80 uppercase tracking-widest mb-3 px-3">
-                      {group.group}
-                    </h3>
-                    <div className="space-y-1">
-                      {group.items.map((item) => (
-                        <Button
-                          key={item.href}
-                          variant={pathname === item.href ? "secondary" : "ghost"}
-                          className={`w-full justify-start h-11 rounded-xl ${pathname === item.href ? "bg-primary/10 text-primary hover:bg-primary/15 font-medium" : "text-muted-foreground hover:text-foreground"}`}
-                          onClick={() => {
-                            router.push(item.href)
-                            setDrawerOpen(false)
-                          }}
-                        >
-                          <item.icon
-                            className={`w-5 h-5 mr-3 ${pathname === item.href ? "text-primary" : "opacity-70"}`}
-                          />
-                          {item.label}
-                        </Button>
-                      ))}
+            <div className="flex-1 overflow-hidden relative">
+              <ScrollArea className="h-full w-full">
+                <div className="p-4 space-y-6 pb-24">
+                  {filteredFeatures.map((group, i) => (
+                    <div
+                      key={i}
+                      className="animate-in fade-in slide-in-from-left-2 duration-300"
+                      style={{ animationDelay: `${i * 50}ms` }}
+                    >
+                      <h3 className="text-xs font-bold text-primary/80 uppercase tracking-widest mb-3 px-3">
+                        {group.group}
+                      </h3>
+                      <div className="space-y-1">
+                        {group.items.map((item) => (
+                          <Button
+                            key={item.href}
+                            variant={pathname === item.href ? "secondary" : "ghost"}
+                            className={`w-full justify-start h-11 rounded-xl ${pathname === item.href ? "bg-primary/10 text-primary hover:bg-primary/15 font-medium" : "text-muted-foreground hover:text-foreground"}`}
+                            onClick={() => {
+                              router.push(item.href)
+                              setDrawerOpen(false)
+                            }}
+                          >
+                            <item.icon
+                              className={`w-5 h-5 mr-3 ${pathname === item.href ? "text-primary" : "opacity-70"}`}
+                            />
+                            {item.label}
+                          </Button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </ScrollArea>
+                  ))}
+                </div>
+              </ScrollArea>
+              <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+            </div>
           </SheetContent>
         </Sheet>
       </div>
