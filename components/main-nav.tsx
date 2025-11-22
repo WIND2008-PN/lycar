@@ -24,6 +24,7 @@ import {
   Palette,
   Video,
   BarChart2,
+  Compass,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
@@ -96,6 +97,7 @@ export function MainNav() {
       group: language === "th" ? "สนุก" : "Fun",
       items: [
         { href: "/games", icon: Trophy, label: t("nav.games", language) },
+        { href: "/landmarks", icon: Compass, label: language === "th" ? "แลนด์มาร์ค" : "Landmarks" },
         { href: "/routes", icon: Map, label: t("nav.routes", language) },
         { href: "/car-colors", icon: Palette, label: t("nav.carColors", language) },
         { href: "/shop", icon: ShoppingBag, label: t("nav.shop", language) },
@@ -285,10 +287,10 @@ export function MainNav() {
               <Button
                 variant="outline"
                 className="h-auto flex-col gap-2 p-4 bg-transparent"
-                onClick={() => router.push("/calendar")}
+                onClick={() => router.push("/landmarks")}
               >
-                <Calendar className="w-6 h-6 text-green-500" />
-                <span className="text-xs">{language === "th" ? "ปฏิทิน" : "Calendar"}</span>
+                <Compass className="w-6 h-6 text-orange-500" />
+                <span className="text-xs">{language === "th" ? "แลนด์มาร์ค" : "Landmarks"}</span>
               </Button>
             </div>
           </SheetContent>
